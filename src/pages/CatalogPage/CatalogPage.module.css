@@ -1,0 +1,18 @@
+.catalogPage {
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+}
+
+.catalogPage aside {
+    width: 360px;
+}
+
+.catalogPage main {
+    flex-grow: 1;
+}
+
+.loadMoreBtn {
+    display: flex;
+    justify-content: center;
+}

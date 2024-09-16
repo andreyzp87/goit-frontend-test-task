@@ -1,0 +1,115 @@
+:root {
+  --color-main: #101828;
+  --color-text: #475467;
+  --color-white: #FFFFFF;
+  --color-inputs: #F7F7F7;
+  --color-badges: #F2F4F7;
+  --color-gray: #6C717B;
+  --color-gray-light: #DADDE1;
+  --color-button: #E44848;
+  --color-button-hover: #D84343;
+  --color-rating: #FFC531;
+
+  --transition-time: 200ms;
+  --transition-form: ease-in-out;
+  --transition: all var(--transition-time) var(--transition-form);
+}
+
+body {
+  font-family: Inter, system-ui, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-main);
+  background-color: var(--color-white);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.font-h1 {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 0.667;
+  letter-spacing: 0;
+}
+
+.font-h2 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.333;
+  letter-spacing: 0;
+}
+
+.font-h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.button {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.5%;
+  border: none;
+  border-radius: 60px;
+  padding: 16px 32px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.button-action {
+  width: 166px;
+  background-color: var(--color-button);
+  color: var(--color-white);
+}
+
+.button-action:hover {
+  background-color: var(--color-button-hover);
+}
+
+.button-outline {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-light);
+}
+
+.button-outline:hover {
+  border-color: var(--color-button-hover);
+}
+
+.app {
+  padding: 0 16px;
+}
