@@ -13,10 +13,12 @@
   --transition-time: 200ms;
   --transition-form: ease-in-out;
   --transition: all var(--transition-time) var(--transition-form);
+
+  --font-family: Inter, system-ui, Helvetica, Arial, sans-serif;
 }
 
 body {
-  font-family: Inter, system-ui, Helvetica, Arial, sans-serif;
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
@@ -74,6 +76,14 @@ img {
 
 .font-medium {
   font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.font-body {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .button {
@@ -111,5 +121,5 @@ img {
 }
 
 .app {
-  padding: 0 16px;
+  padding: 0 64px;
 }

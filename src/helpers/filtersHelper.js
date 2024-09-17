@@ -74,6 +74,36 @@ export const allFilters = {
     type: "bool",
     icon: "radio",
   },
+  length: {
+    name: "length",
+    label: "Length",
+    type: "number",
+    icon: "length",
+  },
+  height: {
+    name: "height",
+    label: "Height",
+    type: "number",
+    icon: "height",
+  },
+  width: {
+    name: "width",
+    label: "Width",
+    type: "number",
+    icon: "width",
+  },
+  tank: {
+    name: "tank",
+    label: "Tank",
+    type: "number",
+    icon: "tank",
+  },
+  consumption: {
+    name: "consumption",
+    label: "Consumption",
+    type: "number",
+    icon: "consumption",
+  },
 };
 
 export const equipmentFilters = {

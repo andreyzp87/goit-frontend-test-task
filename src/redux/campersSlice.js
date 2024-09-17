@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCampers } from "./campersOps";
+import { fetchCamperById, fetchCampers } from "./campersOps";
 
 const campersSlice = createSlice({
   name: "campers",
@@ -10,6 +10,7 @@ const campersSlice = createSlice({
     loading: false,
     error: null,
     isPageLoad: true,
+    camper: null,
   },
   reducers: {
     setCurrentPage: (state, action) => {
@@ -37,6 +38,17 @@ const campersSlice = createSlice({
       .addCase(fetchCampers.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(fetchCamperById.fulfilled, (state, action) => {
+        state.camper = action.payload;
+        state.loading = false;
+      })
+      .addCase(fetchCamperById.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchCamperById.rejected, (state, { error }) => {
+        state.error = error;
+        state.loading = false;
       });
   },
   selectors: {
@@ -46,6 +58,7 @@ const campersSlice = createSlice({
     selectError: (state) => state.error,
     selectLoading: (state) => state.loading,
     selectIsPageLoad: (state) => state.isPageLoad,
+    selectCamper: (state) => state.camper,
   },
 });
 
@@ -58,6 +71,7 @@ export const {
   selectError,
   selectLoading,
   selectIsPageLoad,
+  selectCamper,
 } = campersSlice.selectors;
 
 export const campersReducer = campersSlice.reducer;
