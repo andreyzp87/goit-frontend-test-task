@@ -1,25 +1,39 @@
 import { Link, NavLink } from "react-router-dom";
 import style from "./Navigation.module.css";
+import clsx from "clsx";
+
+import logo from "../../assets/logo.svg";
 
 const Navigation = () => {
   return (
     <nav className={style.navigation}>
-      <div>
-        <Link to="/">TravelTrucks</Link>
+      <div className={style.logo}>
+        <Link to="/">
+          <img src={logo} alt="logo" />
+        </Link>
       </div>
-      <ul className={style.navigation}>
+      <ul className={style.navigationMenu}>
         <li>
-          <NavLink className={style.navLink} to="/">
+          <NavLink
+            className={({ isActive }) =>
+              clsx(style.navLink, isActive && style.navLinkActive)
+            }
+            to="/"
+          >
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink className={style.navLink} to="/catalog">
+          <NavLink
+            className={({ isActive }) =>
+              clsx(style.navLink, isActive && style.navLinkActive)
+            }
+            to="/catalog"
+          >
             Catalog
           </NavLink>
         </li>
       </ul>
-      <hr />
     </nav>
   );
 };

@@ -1,4 +1,14 @@
+import Container from "../../components/Container/Container";
+import style from "./NotFoundPage.module.css";
+
 const NotFoundPage = () => {
-  return <div>Page not found</div>;
+  return (
+    <Container>
+      <article className={style.notFoundPage}>
+        <h1 className="font-h1">Page not found</h1>
+        <p>Sorry, but the page you were looking for doesn't exist.</p>
+      </article>
+    </Container>
+  );
 };
 export default NotFoundPage;

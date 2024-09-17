@@ -10,6 +10,7 @@ import CamperFeatures from "../../components/CamperFeatures/CamperFeatures";
 import CamperReviews from "../../components/CamperReviews/CamperReviews";
 import BookForm from "../../components/BookForm/BookForm";
 import clsx from "clsx";
+import Container from "../../components/Container/Container";
 
 const CamperDetailsPage = () => {
   const { camperId } = useParams();
@@ -23,7 +24,7 @@ const CamperDetailsPage = () => {
   }, [camperId, dispatch]);
 
   return (
-    <div>
+    <Container>
       {camper && (
         <article>
           <CamperDetails camper={camper} />
@@ -64,7 +65,7 @@ const CamperDetailsPage = () => {
           </div>
         </article>
       )}
-    </div>
+    </Container>
   );
 };
 

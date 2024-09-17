@@ -19,6 +19,7 @@ import {
 } from "../../redux/filtersSlice";
 import { resolveFilterParams } from "../../helpers/filtersHelper";
 import style from "./CatalogPage.module.css";
+import Container from "../../components/Container/Container";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -105,22 +106,24 @@ const CatalogPage = () => {
   };
 
   return (
-    <div className={style.catalogPage}>
-      <aside>
-        <CatalogFilter />
-      </aside>
-      <main>
-        {campers.length > 0 && (
-          <CampersList campers={campers} state={location} />
-        )}
-        {loading && <div className={style.loadMoreBtn}>Loading...</div>}
-        {total > campers.length && (
-          <div className={style.loadMoreBtn}>
-            <LoadMoreBtn onPress={loadMore} />
-          </div>
-        )}
-      </main>
-    </div>
+    <Container>
+      <div className={style.catalogPage}>
+        <aside>
+          <CatalogFilter />
+        </aside>
+        <main>
+          {campers.length > 0 && (
+            <CampersList campers={campers} state={location} />
+          )}
+          {loading && <div className={style.loadMoreBtn}>Loading...</div>}
+          {total > campers.length && (
+            <div className={style.loadMoreBtn}>
+              <LoadMoreBtn onPress={loadMore} />
+            </div>
+          )}
+        </main>
+      </div>
+    </Container>
   );
 };
 
