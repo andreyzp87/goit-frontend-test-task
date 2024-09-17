@@ -4,8 +4,27 @@ import sprite from "../../assets/icons.svg";
 import CamperFeatureBadges from "../CamperFeatureBadges/CamperFeatureBadges";
 import clsx from "clsx";
 import CamperHeaderInfo from "../CamperHeaderInfo/CamperHeaderInfo";
+import {
+  addFavourite,
+  removeFavourite,
+  selectIsInside,
+} from "../../redux/favourites";
+import { useDispatch, useSelector } from "react-redux";
 
 const Camper = ({ camper }) => {
+  const dispatch = useDispatch();
+  const isInFavourites = useSelector((state) =>
+    selectIsInside(state, camper.id)
+  );
+
+  const addToFavourites = () => {
+    if (isInFavourites) {
+      dispatch(removeFavourite(camper.id));
+    } else {
+      dispatch(addFavourite(camper.id));
+    }
+  };
+
   return (
     <div className={style.camper}>
       <div>
@@ -19,9 +38,13 @@ const Camper = ({ camper }) => {
           </div>
           <div className={style.camperPrice}>
             <p className="font-h2">€{camper.price}</p>
-            <button type="button">
+            <button type="button" onClick={addToFavourites}>
               <svg className="icon">
-                <use xlinkHref={`${sprite}#heart`}></use>
+                <use
+                  xlinkHref={`${sprite}#${
+                    isInFavourites ? "heart-highlighted" : "heart"
+                  }`}
+                ></use>
               </svg>
             </button>
           </div>
