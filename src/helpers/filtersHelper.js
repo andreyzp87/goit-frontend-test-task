@@ -155,7 +155,7 @@ export const resolveFilterParams = (currentFilters) => {
   const params = {};
 
   if (currentFilters.location) {
-    params.location = currentFilters.location;
+    params.location = currentFilters.location.split(", ").reverse().join(", ");
   }
 
   if (currentFilters.form) {
