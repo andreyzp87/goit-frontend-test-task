@@ -1,7 +1,11 @@
+import { useEffect } from "react";
 import Container from "../../components/Container/Container";
 import style from "./NotFoundPage.module.css";
 
 const NotFoundPage = () => {
+  useEffect(() => {
+    document.title = "Page not found - TravelTrucks";
+  }, []);
   return (
     <Container>
       <article className={style.notFoundPage}>

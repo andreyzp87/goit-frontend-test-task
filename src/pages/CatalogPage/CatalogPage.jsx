@@ -34,6 +34,8 @@ const CatalogPage = () => {
   const location = useLocation();
 
   useEffect(() => {
+    document.title = "Campers catalog - TravelTrucks";
+
     const initialPage = Number(searchParams.get("page")) || 1;
 
     const filters = {

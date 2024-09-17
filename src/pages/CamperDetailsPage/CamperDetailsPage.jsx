@@ -21,6 +21,10 @@ const CamperDetailsPage = () => {
   const [activeTab, setActiveTab] = useState("features");
 
   useEffect(() => {
+    document.title = camper.name + " - TravelTrucks";
+  }, []);
+
+  useEffect(() => {
     dispatch(fetchCamperById(camperId));
   }, [camperId, dispatch]);
 

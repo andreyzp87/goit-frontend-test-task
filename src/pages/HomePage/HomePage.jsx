@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import style from "./HomePage.module.css";
 import clsx from "clsx";
+import { useEffect } from "react";
 
 const HomePage = () => {
+  useEffect(() => {
+    document.title = "Camperts of your dreams - TravelTrucks";
+  }, []);
+
   return (
     <div className={style.homePage}>
       <article>
