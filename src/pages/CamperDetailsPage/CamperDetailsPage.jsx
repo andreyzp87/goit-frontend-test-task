@@ -39,7 +39,7 @@ const CamperDetailsPage = () => {
   return (
     <Container>
       {!error && loading && <Loader />}
-      {error && <p>Something wrong happened</p>}
+      {error && <p className="error">Something wrong happened</p>}
       {!loading && !error && camper && (
         <article>
           <CamperDetails camper={camper} />

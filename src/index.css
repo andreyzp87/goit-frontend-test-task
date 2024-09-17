@@ -126,6 +126,11 @@ img {
   justify-content: center;
 }
 
+.error {
+  width: 100%;
+  text-align: center;
+}
+
 .app {
   max-width: 1440px;
   margin: 0 auto;

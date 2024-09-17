@@ -146,7 +146,9 @@ const CatalogPage = () => {
               <LoadMoreBtn onPress={loadMore} />
             </div>
           )}
-          {error && <p>No campers found with specified filters</p>}
+          {error && (
+            <p className="error">No campers found with specified filters</p>
+          )}
         </main>
       </div>
     </Container>
