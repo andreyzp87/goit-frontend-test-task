@@ -120,6 +120,12 @@ img {
   border-color: var(--color-button-hover);
 }
 
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .app {
   max-width: 1440px;
   margin: 0 auto;

@@ -11,6 +11,7 @@ import {
   setCurrentPage,
   selectLoading,
   resetItems,
+  selectError,
 } from "../../redux/campersSlice";
 import { fetchCampers } from "../../redux/campersOps";
 import CatalogFilter from "../../components/CatalogFilter/CatalogFilter";
@@ -21,6 +22,7 @@ import {
 import { resolveFilterParams } from "../../helpers/filtersHelper";
 import style from "./CatalogPage.module.css";
 import Container from "../../components/Container/Container";
+import Loader from "../../components/Loader/Loader";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -29,6 +31,7 @@ const CatalogPage = () => {
   const currentPage = useSelector(selectCurrentPage);
   const total = useSelector(selectTotal);
   const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
   const isPageLoad = useSelector(selectIsPageLoad);
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
@@ -134,15 +137,16 @@ const CatalogPage = () => {
           <CatalogFilter />
         </aside>
         <main>
-          {campers.length > 0 && (
+          {!error && campers.length > 0 && (
             <CampersList campers={campers} state={location} />
           )}
-          {loading && <div className={style.loadMoreBtn}>Loading...</div>}
-          {!loading && total > campers.length && (
+          {!error && loading && <Loader />}
+          {!error && !loading && total > campers.length && (
             <div className={style.loadMoreBtn}>
               <LoadMoreBtn onPress={loadMore} />
             </div>
           )}
+          {error && <p>No campers found with specified filters</p>}
         </main>
       </div>
     </Container>
