@@ -8,7 +8,7 @@ import {
   addFavourite,
   removeFavourite,
   selectIsInside,
-} from "../../redux/favourites";
+} from "../../redux/favouritesSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Camper = ({ camper }) => {

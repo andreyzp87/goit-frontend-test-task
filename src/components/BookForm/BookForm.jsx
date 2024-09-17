@@ -1,8 +1,12 @@
 import { Field, Form, Formik } from "formik";
 import style from "./BookForm.module.css";
 import BookFormDatepicker from "../BookFormDatepicker/BookFormDatepicker";
+import { useDispatch } from "react-redux";
+import { addBooking } from "../../redux/bookingsSlice";
 
 const BookForm = ({ camper }) => {
+  const dispatch = useDispatch();
+
   const initialValues = {
     name: "",
     email: "",
@@ -11,7 +15,12 @@ const BookForm = ({ camper }) => {
   };
 
   const handleSubmit = (values) => {
-    console.log(values);
+    dispatch(
+      addBooking({
+        id: camper.id,
+        payload: { ...values, date: values.bookingDate.toDateString() },
+      })
+    );
   };
 
   return (

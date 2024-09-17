@@ -5,17 +5,18 @@ import CamperDetails from "../../components/CamperDetails/CamperDetails";
 import { selectCamper } from "../../redux/campersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCamperById } from "../../redux/campersOps";
-import CamperFeatureBadges from "../../components/CamperFeatureBadges/CamperFeatureBadges";
 import CamperFeatures from "../../components/CamperFeatures/CamperFeatures";
 import CamperReviews from "../../components/CamperReviews/CamperReviews";
 import BookForm from "../../components/BookForm/BookForm";
 import clsx from "clsx";
 import Container from "../../components/Container/Container";
+import { selectBooked } from "../../redux/bookingsSlice";
 
 const CamperDetailsPage = () => {
   const { camperId } = useParams();
   const dispatch = useDispatch();
   const camper = useSelector(selectCamper);
+  const booking = useSelector((state) => selectBooked(state, camperId));
 
   const [activeTab, setActiveTab] = useState("features");
 
@@ -59,9 +60,10 @@ const CamperDetailsPage = () => {
           <div className={style.tabsContent}>
             {activeTab === "features" && <CamperFeatures camper={camper} />}
             {activeTab === "reviews" && <CamperReviews camper={camper} />}
-            <div>
-              <BookForm camper={camper} />
-            </div>
+            {booking && (
+              <p>You have booked this camper for {booking.payload.date}</p>
+            )}
+            {!booking && <BookForm camper={camper} />}
           </div>
         </article>
       )}

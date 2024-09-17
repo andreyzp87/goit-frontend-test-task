@@ -12,16 +12,23 @@ import {
   REHYDRATE,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { favouritesReducer } from "./favourites";
-
-const persistConfig = {
-  key: "favorites",
-  storage,
-};
+import { favouritesReducer } from "./favouritesSlice";
+import { bookingsReducer } from "./bookingsSlice";
 
 const persistedFavouritesReducer = persistReducer(
-  persistConfig,
+  {
+    key: "favorites",
+    storage,
+  },
   favouritesReducer
+);
+
+const persistedBookingsReducer = persistReducer(
+  {
+    key: "bookings",
+    storage,
+  },
+  bookingsReducer
 );
 
 export const store = configureStore({
@@ -29,6 +36,7 @@ export const store = configureStore({
     campers: campersReducer,
     filters: filtersReducer,
     favourites: persistedFavouritesReducer,
+    bookings: persistedBookingsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
