@@ -16,6 +16,8 @@ const CatalogFilter = () => {
 
   const currentFilters = useSelector(selectCurrentFilters);
 
+  if (!currentFilters) return null;
+
   const initialValues = {
     location: currentFilters.location,
     form: currentFilters.form,

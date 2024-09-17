@@ -16,7 +16,11 @@ const campersSlice = createSlice({
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
+    resetItems: (state) => {
+      state.items = [];
+    },
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(fetchCampers.pending, (state) => {
@@ -62,7 +66,7 @@ const campersSlice = createSlice({
   },
 });
 
-export const { setCurrentPage } = campersSlice.actions;
+export const { setCurrentPage, resetItems } = campersSlice.actions;
 
 export const {
   selectCampers,

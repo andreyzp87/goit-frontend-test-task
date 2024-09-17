@@ -10,6 +10,7 @@ import {
   selectTotal,
   setCurrentPage,
   selectLoading,
+  resetItems,
 } from "../../redux/campersSlice";
 import { fetchCampers } from "../../redux/campersOps";
 import CatalogFilter from "../../components/CatalogFilter/CatalogFilter";
@@ -58,6 +59,9 @@ const CatalogPage = () => {
       return;
     }
 
+    dispatch(resetItems());
+    dispatch(setCurrentPage(1));
+
     dispatch(
       fetchCampers({
         ...resolveFilterParams(currentFilters),
@@ -67,7 +71,23 @@ const CatalogPage = () => {
     );
 
     updateSearchParams(currentFilters);
-  }, [currentFilters, currentPage]);
+  }, [currentFilters]);
+
+  useEffect(() => {
+    if (isPageLoad) {
+      return;
+    }
+
+    dispatch(
+      fetchCampers({
+        ...resolveFilterParams(currentFilters),
+        page: currentPage,
+        limit: 4,
+      })
+    );
+
+    updateSearchParams(currentFilters);
+  }, [currentPage]);
 
   const updateSearchParams = (currentFilters) => {
     const newSearchParams = {
@@ -116,7 +136,7 @@ const CatalogPage = () => {
             <CampersList campers={campers} state={location} />
           )}
           {loading && <div className={style.loadMoreBtn}>Loading...</div>}
-          {total > campers.length && (
+          {!loading && total > campers.length && (
             <div className={style.loadMoreBtn}>
               <LoadMoreBtn onPress={loadMore} />
             </div>
